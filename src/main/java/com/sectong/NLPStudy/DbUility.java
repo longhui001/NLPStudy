@@ -13,7 +13,7 @@ public class DbUility {
         try {
 //            Connection con = null; //定义一个MYSQL链接对象
             Class.forName("com.mysql.jdbc.Driver").newInstance(); //MYSQL驱动
-            con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/hamstercrawler", "root", ""); //链接本地MYSQL
+            con = DriverManager.getConnection("jdbc:mysql://:3306/hamstercrawler", "root", ""); //链接本地MYSQL
             System.out.print("yes");
             return  true;
         } catch (Exception e) {
@@ -27,6 +27,7 @@ public class DbUility {
             Statement stmt; //创建声明
             stmt = con.createStatement();
             ResultSet res = stmt.executeQuery(sql);
+            stmt.close();
             return res.next();
         } catch (Exception e) {
             System.out.println("MYSQL  Select ERROR:" + e.getMessage());
@@ -39,12 +40,22 @@ public class DbUility {
             Statement stmt; //创建声明
             stmt = con.createStatement();
             //新增一条数据
-            return stmt.executeUpdate(sql);
+            int status = stmt.executeUpdate(sql);
+            stmt.close();
+            return status;
         } catch (Exception e) {
             //新增一条数据
             System.out.println("MYSQL  Insert ERROR:" + e.getMessage());
             return 0;
         }
     }
-//    public
+    public boolean Close() {
+        try {
+            con.close();
+            return true;
+        } catch (Exception e) {
+            System.out.println("Close faild," + e.getMessage());
+            return false;
+        }
+    }
 }

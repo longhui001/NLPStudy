@@ -134,14 +134,14 @@ public class CoreNLPSegment {
 				System.out.println(strString[2]);
 				if(strString.length >=3) {
 					String name = strString[2].replaceAll("\"","");
-					name = name.replaceAll("'s","");
+					name = name.replaceAll("'","");
 					List<String> words = Segment(name, pipeline);
 					jsonWords_name = mapper.writeValueAsString(words);
 				}
 				System.out.println(strString[3]);
 				if(strString.length >3){
 					String des = strString[3].replaceAll("\"","");
-					des = des.replaceAll("'s", "");
+					des = des.replaceAll("'", "");
 					List<String> words = Segment(des, pipeline);
 					jsonWords_description = mapper.writeValueAsString(words);
 				}
@@ -159,6 +159,7 @@ public class CoreNLPSegment {
 //				System.out.print(description);
 				line = in.readLine();
 			}
+			db.Close();
 		} catch (Exception e){
 			System.out.println("main exception:" + e.getMessage() );
 		}
