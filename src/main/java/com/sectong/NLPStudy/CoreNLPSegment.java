@@ -85,7 +85,7 @@ public class CoreNLPSegment {
 
 		return fileContentArr;// 返回文件内容,默认编码
 	}
-	public static void main(String[] args) throws IOException {
+	public static void _main(String[] args) throws IOException {
 		//读取配置文件
 		if(args.length < 1 ) {
 			System.out.println("pls input segment file:");

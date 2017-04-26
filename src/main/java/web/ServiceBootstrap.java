@@ -28,9 +28,8 @@ public class ServiceBootstrap {
 
     @ResponseBody
     @ExceptionHandler
-    public ResponseEntity error(Exception e){
+    public ResponseEntity<String> error(Exception e){
         logger.error("Some one error has been interrupt!", e);
-        ResponseEntity entity = new ResponseEntity(HttpStatus.SERVICE_UNAVAILABLE);
-        return entity;
+        return new ResponseEntity<String>(e.getMessage(), HttpStatus.SERVICE_UNAVAILABLE);
     }
 }
