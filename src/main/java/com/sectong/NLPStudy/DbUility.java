@@ -27,7 +27,7 @@ public class DbUility {
             Statement stmt; //创建声明
             stmt = con.createStatement();
             ResultSet res = stmt.executeQuery(sql);
-            stmt.close();
+//            stmt.close();
             return res.next();
         } catch (Exception e) {
             System.out.println("MYSQL  Select ERROR:" + e.getMessage());
@@ -41,7 +41,7 @@ public class DbUility {
             stmt = con.createStatement();
             //新增一条数据
             int status = stmt.executeUpdate(sql);
-            stmt.close();
+//            stmt.close();
             return status;
         } catch (Exception e) {
             //新增一条数据
